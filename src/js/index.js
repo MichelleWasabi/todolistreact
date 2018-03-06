@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 
 import $ from "jquery";
 import 'bootstrap';
-import '../css/index.scss';
+import '../styles/index.scss';
 
-var verySimpleComponent = function(){
-  return (<p>Hello World</p>);
+import {Todolist} from './Todolist.jsx';
+
+//React knows to just print. Must use return inside the function for it to render
+var Verysimplecomponent = function(){
+  
 }
 
 
@@ -14,6 +17,6 @@ var verySimpleComponent = function(){
 //require('../css/styles.scss');
 // Render application to DOM
 ReactDOM.render(
-    <verySimpleComponent />,
+    <Todolist />,
     document.querySelector('#app')
 );
