@@ -18,14 +18,15 @@ export class Todolist extends React.Component {
     render() {
         let theList = this.state.todos.map((currentElement, index) =>{
             return(
-         <li className="list-group-item d-flex justify-content-between align-items-center">
-            XXXXX
+         <li key={currentElement.id} className="list-group-item d-flex justify-content-between align-items-center">
+            {currentElement.title}
                 <label className="btn btn-outline-secondary"><i className="fas fa-trash-alt"></i></label>
             </li>
         )
        });
         //everything goes inside a big div
         return (
+            
             <div className="container">
                 <div className="row">
                     <div className= "col-sm-12 col-md-6">
@@ -44,7 +45,6 @@ export class Todolist extends React.Component {
                                         <div className="col-md-12">
                                            <ul className="list-group">
                                            {theList}
-                                              
                                             </ul>
                                         </div>
                                     </div>
