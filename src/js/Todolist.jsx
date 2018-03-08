@@ -25,12 +25,23 @@ export class Todolist extends React.Component {
         this.setState(tempState)
         return false;
     }
+    
+    taskDelete(trash){
+       // alert("button deleted");
+  
+        let tempTodos = this.state.todos.filter( (task) => task.id != trash);
+        let tempState = this.state;
+        tempState.todos = tempTodos;
+        //responsible for setting new state has access to passing the new state
+        this.setState(tempState);
+    }
+    
     render() {
         let theList = this.state.todos.map((currentElement, index) =>{
             return(
          <li key={currentElement.id} className="list-group-item d-flex justify-content-between align-items-center">
             {currentElement.title}
-                <label className="btn btn-outline-secondary"><i className="fas fa-trash-alt"></i></label>
+                <label onClick= {() => this.taskDelete(currentElement.id)}   className="btn btn-outline-secondary"><i className="fas fa-trash-alt"></i></label>
             </li>
         )
        });
