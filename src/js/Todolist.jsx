@@ -15,6 +15,16 @@ export class Todolist extends React.Component {
           taskInput: ''
         };
     }
+    
+    handleFormSubmit(event){
+        event.preventDefault();
+        //console.log(e);
+        let tempState = this.state;
+        tempState.todos.push({ title: event.target[0].value , id: (Math.random()*10) });
+        //responsible for setting new state has access to passing the new state
+        this.setState(tempState)
+        return false;
+    }
     render() {
         let theList = this.state.todos.map((currentElement, index) =>{
             return(
@@ -33,11 +43,12 @@ export class Todolist extends React.Component {
                         <div className="card">
                             <div className="card-header text-center listTitle">Sunday Shopping List</div>
                                 <div className="card-block">
-                                    <form>
+                                {/* onsubmit is allowing us to intercept the type=submit below to give it instruction this.handle is for anytime we want to interact with the state*/}
+                                    <form onSubmit= {this.handleFormSubmit.bind(this)}>
                                         <div className="input-group">
                                             <input type="text" className="form-control" placeholder="add tasks" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
                                                 <div className="input-group-append">
-                                                    <button className="btn btn-outline-secondary" type="button">ADD</button>
+                                                    <input className="btn btn-outline-secondary" type="submit" value="+"/>
                                                 </div>
                                          </div>
                                     </form>
