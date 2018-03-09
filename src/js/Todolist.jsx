@@ -23,6 +23,7 @@ export class Todolist extends React.Component {
         tempState.todos.push({ title: event.target[0].value , id: (Math.random()*10) });
         //responsible for setting new state has access to passing the new state
         this.setState(tempState)
+        document.getElementById("emptyInput").value = "";
         return false;
     }
     
@@ -57,7 +58,7 @@ export class Todolist extends React.Component {
                                 {/* onsubmit is allowing us to intercept the type=submit below to give it instruction this.handle is for anytime we want to interact with the state*/}
                                     <form onSubmit= {this.handleFormSubmit.bind(this)}>
                                         <div className="input-group">
-                                            <input type="text" className="form-control" placeholder="add tasks" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+                                            <input id="emptyInput" type="text" className="form-control" placeholder="add tasks" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
                                                 <div className="input-group-append">
                                                     <input className="btn btn-outline-secondary" type="submit" value="+"/>
                                                 </div>
